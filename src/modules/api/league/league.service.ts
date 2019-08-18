@@ -1,8 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { PokemonEntity } from '../entity/pokemon.entity';
 import { Repository } from 'typeorm';
-import { LeagueEntity } from '../entity/league.entity';
 import { InjectRepository } from '@nestjs/typeorm';
+import { LeagueEntity } from '../../entity/league.entity';
 
 @Injectable()
 export class LeagueService {

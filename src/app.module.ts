@@ -1,12 +1,9 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ConfigModule } from './modules/config/config.module';
 import { TypeOrmModule, TypeOrmModuleAsyncOptions } from '@nestjs/typeorm';
 import { ConfigService } from './modules/config/config.service';
-import { PokemonModule } from './modules/pokemon/pokemon.module';
-import { LeagueModule } from './modules/league/league.module';
+import { ApiModule } from './modules/api/api.module';
 
 @Module({
   imports: [
@@ -38,11 +35,10 @@ import { LeagueModule } from './modules/league/league.module';
     GraphQLModule.forRoot({
       playground: true,
       typePaths: ['./**/*.graphql'],
+      context: ({ req }) => ({ headers: req.headers }),
     }),
-    PokemonModule,
-    LeagueModule,
+    ApiModule,
   ],
-  providers: [AppService],
 })
 export class AppModule {
 }
