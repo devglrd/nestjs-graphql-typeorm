@@ -17,6 +17,6 @@ type Deleted{
 
 type Mutation {
     create(name: String!, type: String!, pokedex: String!): Pokemon
-    update(id: ID, name: String!, type: String!, pokedex: String!): Pokemon
-    delete(id: ID): Deleted
+    update(id: ID!, name: String!, type: String!, pokedex: String!): Pokemon
+    delete(id: ID!): Deleted
 }

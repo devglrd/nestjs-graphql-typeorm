@@ -4,6 +4,7 @@ import { ConfigModule } from './modules/config/config.module';
 import { TypeOrmModule, TypeOrmModuleAsyncOptions } from '@nestjs/typeorm';
 import { ConfigService } from './modules/config/config.service';
 import { ApiModule } from './modules/api/api.module';
+import { join } from 'path';
 
 @Module({
   imports: [
@@ -36,6 +37,11 @@ import { ApiModule } from './modules/api/api.module';
       playground: true,
       typePaths: ['./**/*.graphql'],
       context: ({ req }) => ({ headers: req.headers }),
+      debug: true,
+      definitions: {
+        path: join(process.cwd(), 'src/graphql.schema.ts'),
+        outputAs: 'class',
+      },
     }),
     ApiModule,
   ],
